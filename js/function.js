@@ -1,6 +1,6 @@
 //Task №1
 const stringLength = (str , maxLength) =>
-  str.length <= maxLength ? true : false ;
+  str.length <= maxLength ? 'yes' : 'no' ;
 
 stringLength('проверяемая строка', 20);
 stringLength('проверяемая строка', 18);
@@ -10,11 +10,11 @@ stringLength('проверяемая строка', 10);
 const polifil = function (string) {
   const modifiedString = string.replaceAll(' ','').toLowerCase();
   let polifilString = '';
-  for(let i = modifiedString.length;i >= 0;i--) {
+  for (let i = modifiedString.length ; i >= 0 ; i--) {
     polifilString += modifiedString.at(i);
   }
-  polifilString === modifiedString ? true : false ;
-}
+  return (polifilString === modifiedString) ? 'yes' : 'no' ;
+};
 
 polifil('топот');
 polifil('ДовОд');
@@ -22,17 +22,13 @@ polifil('Кекс');
 
 //Task №3
 function getNumberFromString (str) {
-  let processedString= '';
-  for (let i=0;i<str.length;i++){
-    if(!isNaN(str[i])) {
-      processedString+=str[i];
-    }
-    if (processedString.length > 0) {
-      return processedString.replaceAll(' ','');
-    } else {
-      return NaN;
+  let processedString = '';
+  for (let i = 0 ; i < str.length ; i++){
+    if (!isNaN(str[i])) {
+      processedString += str[i];
     }
   }
+  return (processedString.length > 0) ? processedString.replaceAll(' ','') : NaN;
 }
 
 getNumberFromString('2023 год');
