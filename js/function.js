@@ -1,6 +1,6 @@
 //Task №1
 const stringLength = (str , maxLength) =>
-  str.length <= maxLength ? 'yes' : 'no' ;
+  str.length <= maxLength;
 
 stringLength('проверяемая строка', 20);
 stringLength('проверяемая строка', 18);
@@ -13,7 +13,7 @@ const polifil = function (string) {
   for (let i = modifiedString.length ; i >= 0 ; i--) {
     polifilString += modifiedString.at(i);
   }
-  return (polifilString === modifiedString) ? 'yes' : 'no' ;
+  return (polifilString === modifiedString);
 };
 
 polifil('топот');
