@@ -68,8 +68,8 @@ const generateCommentsList = function () {
     avatar: `img/avatar${getRandomInteger(1,6)}$.svg`,
     message: generateRandomComment,
     name: generateRandomName,
-  }
-}
+  };
+};
 
 //функция для создания массива объектов
 const generatePhotoDescription = function () {
