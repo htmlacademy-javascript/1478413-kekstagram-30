@@ -15,8 +15,8 @@ const generateRandomComment = function (){
     'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
     'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',];
 
-    const randomComment = commentList[Math.round(Math.random() * (commentList.length - 1))];
-    return randomComment;
+  const randomComment = commentList[Math.round(Math.random() * (commentList.length - 1))];
+  return randomComment;
 };
 
 //функция возвращает рандомное описание
@@ -26,7 +26,7 @@ const getDescription = function () {
   ];
   const randomDescription = descriptionList[Math.round(Math.random() * (descriptionList.length - 1))];
   return randomDescription();
-}
+};
 
 //функция для возврата рандомного имени
 const generateRandomName = function (){
@@ -48,8 +48,8 @@ const generateRandomName = function (){
 const generateRandomLikes = function () {
   const min = 15;
   const max = 200;
-  return Math.round(Math.random() * (max-min) + min);
-}
+  return Math.round(Math.random() * (max - min) + min);
+};
 
 //функция для возврата уникального числа по возрастанию
 const createIdGenerator = function () {
@@ -78,9 +78,8 @@ const generatePhotoDescription = function () {
     url :  `photos/${createIdGenerator}$.jpg`,
     decription : getDescription,
     likes : generateRandomLikes,
-    comments: Array.from({length: getRandomInteger(1,30)}),
-  }
+    comments: Array.from({length: getRandomInteger(1,30)} , generateCommentsList),
+  };
 };
 
 const generateArrayPhotos = Array.from({length: 25}, generatePhotoDescription);
-console.log(generateArrayPhotos);
