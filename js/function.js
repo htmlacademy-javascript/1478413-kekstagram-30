@@ -51,7 +51,7 @@ const findTime = function (dayStart , dayEnd , workMeeting , meetingTime) {
   if (array[0] > array[4]){
     return false;
   } else {
-    quantity = (array[2] * 60 + array[1]) - (array[4] * 60 + array[5]);
+    quantity = (array[2] * 60 + array[3]) - (array[4] * 60 + array[5]);
   }
   return quantity > 0 ? true : false;
 };
