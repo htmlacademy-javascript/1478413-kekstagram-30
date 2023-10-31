@@ -1,6 +1,6 @@
-import {getRandomInteger , idCreator , urlCreator} from './util.js';
+import {getRandomInteger , createId} from './util.js';
 
-const namesList = [
+const NAMELIST = [
   'Иван',
   'Дмитрий',
   'Ксения',
@@ -10,7 +10,7 @@ const namesList = [
   'Антон',
 ];
 
-const commentList = ['Всё отлично!',
+const COMMENTLIST= ['Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
   'Моя бабушка случайно чихнула с фотоаппаратом в руках и у неё получилась фотография лучше.',
@@ -18,7 +18,7 @@ const commentList = ['Всё отлично!',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
-const descriptionList = [
+const DESCRIPTIONLIST = [
   'описание 1',
   'описание 2',
   'описание 3',
@@ -30,6 +30,8 @@ const descriptionList = [
   'описание 9',
 ];
 
+const idCreator = createId();
+const urlCreator = createId();
 
 /*
  * функция для возврата чисел по возрастанию
@@ -40,8 +42,8 @@ const generateCommentsList = function () {
   return {
     id: getRandomInteger(1,10000),
     avatar: `img/avatar${getRandomInteger(1,6)}.svg`,
-    message: commentList[getRandomInteger(0,commentList.length - 1)],
-    name: namesList[getRandomInteger(0,namesList.length - 1)],
+    message: COMMENTLIST[getRandomInteger(0,COMMENTLIST.length - 1)],
+    name: NAMELIST[getRandomInteger(0,NAMELIST.length - 1)],
   };
 };
 
@@ -54,7 +56,7 @@ const generatePhotoData = function () {
   return {
     id : idCreator(),
     url :  `photos/${urlCreator()}.jpg`,
-    decription : descriptionList[getRandomInteger(0,descriptionList.length - 1)],
+    decription : DESCRIPTIONLIST[getRandomInteger(0,DESCRIPTIONLIST.length - 1)],
     likes : getRandomInteger(15,200),
     comments: Array.from({length: getRandomInteger(1,30)} , generateCommentsList),
   };

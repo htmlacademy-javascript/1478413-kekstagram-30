@@ -24,7 +24,4 @@ const createId = function () {
   };
 };
 
-const idCreator = createId();
-const urlCreator = createId();
-
-export {getRandomInteger , idCreator , urlCreator};
+export {getRandomInteger , createId};
