@@ -3,7 +3,7 @@
  * @param {Array} inputArray — изначальный массив
  * @return {*} — случайный элемент массива
  */
-const getRandomInteger = function (a, b) {
+const getRandomInteger = function(a, b) {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
   const result = Math.random() * (upper - lower + 1) + lower;
@@ -15,10 +15,10 @@ const getRandomInteger = function (a, b) {
  * @param - без параметров
  * @return {*} — число по возрастанию от единицы
  */
-const createId = function () {
+const createId = function() {
   let lastGeneratedId = 0;
 
-  return function () {
+  return function() {
     lastGeneratedId += 1;
     return lastGeneratedId;
   };

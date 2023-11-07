@@ -36,27 +36,26 @@ const descriptionList = [
  * @param - без параметров
  * @return {*} — объект с информацией о пользователе
  */
-const generateCommentsList = function () {
+const generateCommentsList = function() {
   return {
-    id: getRandomInteger(1,10000),
-    avatar: `img/avatar${getRandomInteger(1,6)}.svg`,
-    message: commentList[getRandomInteger(0,commentList.length - 1)],
-    name: namesList[getRandomInteger(0,namesList.length - 1)],
+    id: getRandomInteger(1, 10000),
+    avatar: `img/avatar${getRandomInteger(1, 6)}.svg`,
+    message: commentList[getRandomInteger(0, commentList.length - 1)],
+    name: namesList[getRandomInteger(0, namesList.length - 1)],
   };
 };
 
 /*
  * функция для возврата чисел по возрастанию
- * @param - без параметров
  * @return {*} — объект с информацией о опубликованной фотографии
  */
-const generatePhotoData = function () {
+const generatePhotoData = function() {
   return {
     id : idCreator(),
     url :  `photos/${urlCreator()}.jpg`,
-    decription : descriptionList[getRandomInteger(0,descriptionList.length - 1)],
-    likes : getRandomInteger(15,200),
-    comments: Array.from({length: getRandomInteger(1,30)} , generateCommentsList),
+    decription : descriptionList[getRandomInteger(0, descriptionList.length - 1)],
+    likes : getRandomInteger(15, 200),
+    comments: Array.from({length: getRandomInteger(1, 30)} , generateCommentsList),
   };
 };
 
