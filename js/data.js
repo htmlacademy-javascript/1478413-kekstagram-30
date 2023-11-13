@@ -39,7 +39,7 @@ const descriptionList = [
 const generateCommentsList = function() {
   return {
     id: getRandomInteger(1, 10000),
-    avatar: `img/avatar${getRandomInteger(1, 6)}.svg`,
+    avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
     message: commentList[getRandomInteger(0, commentList.length - 1)],
     name: namesList[getRandomInteger(0, namesList.length - 1)],
   };
@@ -49,7 +49,7 @@ const generateCommentsList = function() {
  * функция для возврата чисел по возрастанию
  * @return {*} — объект с информацией о опубликованной фотографии
  */
-const generatePhotoData = function() {
+const generatePictureData = function() {
   return {
     id : idCreator(),
     url :  `photos/${urlCreator()}.jpg`,
@@ -58,7 +58,15 @@ const generatePhotoData = function() {
     comments: Array.from({length: getRandomInteger(1, 30)} , generateCommentsList),
   };
 };
+/**
+ *
+ * @param {*} num - количество фотографий
+ * @return array
+ */
+/*const generateArrayPictures = function(count) {
+  const photos = Array.from({length: count}, generatePictureData);
+  return photos;
+};*/
 
-const generateArrayPhotos = Array.from({length: 25}, generatePhotoData);
-
-export {generateArrayPhotos};
+const generateArrayPictures = Array.from({length: 25}, generatePictureData);
+export {generateArrayPictures};
