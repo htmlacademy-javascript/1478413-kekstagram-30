@@ -39,7 +39,7 @@ const descriptionList = [
 const generateCommentsList = function() {
   return {
     id: getRandomInteger(1, 10000),
-    avatar: `img/avatar${getRandomInteger(1, 6)}.svg`,
+    avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
     message: commentList[getRandomInteger(0, commentList.length - 1)],
     name: namesList[getRandomInteger(0, namesList.length - 1)],
   };

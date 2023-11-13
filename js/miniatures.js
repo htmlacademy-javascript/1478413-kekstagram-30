@@ -1,10 +1,10 @@
-import { generateArrayPictures } from './data.js';
+import { openFullSizePicture } from './fullPicture.js';
 
 const picturesContainer = document.querySelector('.pictures');
 const picturesTepmplate = document.querySelector('#picture').content.querySelector('.picture');
-const bigPicture = document.querySelector('.big-picture__img');
+//const bigPicturePreview = document.querySelector('.big-picture__preview');
 /*
- * функция для возврата чисел по возрастанию
+ * функция для генерации одной миниатюры
  * @param (string) url - путь к файлу
  * @param (string) description- описание фотографии
  * @param (int) likes - количество лайков
@@ -19,32 +19,14 @@ function renderPicture ({ url, description, likes, comments, id}) {
   imgElement.dataset.id = id;
   pictureElement.querySelector('.picture__likes').textContent = likes;
   pictureElement.querySelector('.picture__comments').textContent = comments.length;
+  document.querySelectorAll('.social__text').innerHTML = '';
   pictureElement.addEventListener('click' , () => openFullSizePicture(id));
   return pictureElement;
 }
 
-function openFullSizePicture (photoId) {
-  const selectedPhoto = generateArrayPictures.find ((photo) => photo.id === photoId);
-  if (selectedPhoto) {
-    console.log(selectedPhoto);
-    renderBigPicture(selectedPhoto);
-  }
-}
-
-function renderBigPicture ({ url, description, likes }) {
-  bigPicture.classList.remove('hidden');
-  bigPicture.querySelector('big-picture__img').src = url;
-  bigPicture.querySelector('big-picture__img').alt = description;
-  bigPicture.querySelector('likes-count').textContent = likes;
-  bigPicture.querySelector('social__caption').textContent = description;
-
-
-}
-
 /*
- * функция для возврата чисел по возрастанию
- * @param (array) photos - массив сгенерированных фотографий
- * @return {*} — готовый блок добавления всех фотографий
+ * функция для отрисовки всех миниатюр из массива
+ * @param (array) pictures - массив
  */
 const renderAllPictures = function(pictures) {
   const fragment = document.createDocumentFragment();
