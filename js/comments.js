@@ -14,13 +14,25 @@ function renderComment ({ avatar, name, message }) {
 
 function renderCommentsList (commentsArray) {
   const fragment = document.createDocumentFragment();
-  commentsCount.classList.add('hidden');
-  commentsLoader.classList.add('hidden');
-  commentsArray.forEach((comment) => {
+  commentsContainer.innerHTML = '';
+  const visibleComments = commentsArray.slice(0,5);
+  commentsCount.textContent = `${visibleComments.length} из ${commentsArray.length} комментариев`;
+  visibleComments.forEach((comment) => {
     const commentElem = renderComment(comment);
     fragment.append(commentElem);
   });
+
+  commentsLoader.addEventListener('click' , () => {
+    showComments(commentsArray);
+  });
   commentsContainer.append(fragment);
+}
+
+function showComments (array) {
+  const startIndex = commentsContainer.children.length;
+  const nextComments = array.splice(startIndex,startIndex);
+  console.log(nextComments);
+  renderCommentsList(nextComments);
 }
 
 export {renderCommentsList};

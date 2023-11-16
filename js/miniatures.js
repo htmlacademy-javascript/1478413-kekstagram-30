@@ -19,7 +19,6 @@ function renderPicture ({ url, description, likes, comments, id}) {
   imgElement.dataset.id = id;
   pictureElement.querySelector('.picture__likes').textContent = likes;
   pictureElement.querySelector('.picture__comments').textContent = comments.length;
-  document.querySelectorAll('.social__text').innerHTML = '';
   pictureElement.addEventListener('click' , () => openFullSizePicture(id));
   return pictureElement;
 }
