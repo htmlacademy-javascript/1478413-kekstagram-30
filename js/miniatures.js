@@ -1,30 +1,33 @@
+import { openFullSizePicture } from './fullPicture.js';
+
 const picturesContainer = document.querySelector('.pictures');
 const picturesTepmplate = document.querySelector('#picture').content.querySelector('.picture');
+//const bigPicturePreview = document.querySelector('.big-picture__preview');
 /*
- * функция для возврата чисел по возрастанию
+ * функция для генерации одной миниатюры
  * @param (string) url - путь к файлу
  * @param (string) description- описание фотографии
  * @param (int) likes - количество лайков
  * @param (array) comments - массив комментариев
  * @return {*} — один сгенерированный элемент фотографии
  */
-//хочу обсудить деструктуризацию, не совсем понял
-const renderPicture = function({ url, description, likes, comments }) {
+function renderPicture ({ url, description, likes, comments, id}) {
   const pictureElement = picturesTepmplate.cloneNode(true);
-  //а как правильно записать повторные две строчки ниже в одну переменную?
-  pictureElement.querySelector('.picture__img').src = url;
-  pictureElement.alt = description;
+  const imgElement = pictureElement.querySelector('.picture__img');
+  imgElement.src = url;
+  imgElement.alt = description;
+  imgElement.dataset.id = id;
   pictureElement.querySelector('.picture__likes').textContent = likes;
   pictureElement.querySelector('.picture__comments').textContent = comments.length;
+  pictureElement.addEventListener('click' , () => openFullSizePicture(id));
   return pictureElement;
-};
+}
 
 /*
- * функция для возврата чисел по возрастанию
- * @param (array) photos - массив сгенерированных фотографий
- * @return {*} — готовый блок добавления всех фотографий
+ * функция для отрисовки всех миниатюр из массива
+ * @param (array) pictures - массив
  */
-const renderAllPicture = function(pictures) {
+const renderAllPictures = function(pictures) {
   const fragment = document.createDocumentFragment();
   pictures.forEach ((picture) => {
     const thumbnail = renderPicture(picture);
@@ -34,6 +37,6 @@ const renderAllPicture = function(pictures) {
   picturesContainer.append(fragment);
 };
 
-export {renderAllPicture};
+export {renderAllPictures , renderPicture};
 
 

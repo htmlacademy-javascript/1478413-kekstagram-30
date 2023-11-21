@@ -1,4 +1,5 @@
-import {generateArrayPhotos} from './data.js';
-import {renderAllPicture} from './miniatures.js';
+import {generateArrayPictures} from './data.js';
+import {renderAllPictures} from './miniatures.js';
 
-renderAllPicture(generateArrayPhotos);
+//const arrayPictures = generateArrayPictures(25);
+renderAllPictures(generateArrayPictures);
