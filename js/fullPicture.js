@@ -12,6 +12,7 @@ const closeButton = document.querySelector('.big-picture__cancel');
 function openFullSizePicture (photoId) {
   const selectedPhoto = generateArrayPictures.find ((photo) => photo.id === photoId);
   if (selectedPhoto) {
+    window.currentCommentStep = 0;
     renderBigPicture(selectedPhoto);
     closeButton.addEventListener('click', () => {
       pushCloseButton();
@@ -37,18 +38,10 @@ function pushEscButton (evt) {
 function pushCloseButton () {
   bigPicture.classList.add('hidden');
   //обработчик не удаляется
-  document.removeEventListener('keydown', pushEscButton());
+  document.removeEventListener('keydown', pushEscButton);
   //не срабатывает удаление почему-то
   document.body.classList.remove('modal-open');
 }
-
-
-/*
- * функция отрисовки полноразмерной фотографии
- * @param (string) url - путь к файлу
- * @param (string) description- описание фотографии
- * @param (int) likes - количество лайков
- */
 
 function renderBigPicture ({ url, description, likes, comments }) {
   bigPicture.classList.remove('hidden');

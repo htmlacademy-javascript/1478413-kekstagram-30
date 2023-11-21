@@ -15,24 +15,35 @@ function renderComment ({ avatar, name, message }) {
 function renderCommentsList (commentsArray) {
   const fragment = document.createDocumentFragment();
   commentsContainer.innerHTML = '';
-  const visibleComments = commentsArray.slice(0,5);
-  commentsCount.textContent = `${visibleComments.length} из ${commentsArray.length} комментариев`;
+  const index = window.currentCommentStep * 5;
+  const visibleComments = commentsArray.slice(index, index + 5);
+  commentsCount.textContent = `${(window.currentCommentStep * 5) + visibleComments.length} из ${commentsArray.length} комментариев`;
+
   visibleComments.forEach((comment) => {
     const commentElem = renderComment(comment);
     fragment.append(commentElem);
   });
 
-  commentsLoader.addEventListener('click' , () => {
-    showComments(commentsArray);
-  });
+  if (visibleComments.length === commentsArray.length) {
+    commentsLoader.classList.add('hidden');
+  }
+
+  if (window.currentCommentStep === 0) {
+    commentsLoader.addEventListener('click' , () => {
+      showComments(commentsArray);
+    });
+  }
+
   commentsContainer.append(fragment);
 }
 
 function showComments (array) {
-  const startIndex = commentsContainer.children.length;
-  const nextComments = array.splice(startIndex,startIndex);
-  console.log(nextComments);
-  renderCommentsList(nextComments);
+  if ((window.currentCommentStep * 5) < array.length - 5) {
+    window.currentCommentStep++;
+    renderCommentsList(array);
+  } else {
+    commentsLoader.classList.add('hidden');
+  }
 }
 
 export {renderCommentsList};
